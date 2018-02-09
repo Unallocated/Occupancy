@@ -55,7 +55,7 @@ currentlyOpen()
 pushStatusToWebsite ()
 {
     log "Call to pushStatusToWebsite"
-    ftp -n "${OCS_UAS_URL}" << END_FTP_COMMANDS
+    sftp -n "${OCS_UAS_URL}" << END_FTP_COMMANDS
         quote USER ${OCS_UAS_USER}
         quote PASS ${OCS_UAS_PASS}
         ascii
