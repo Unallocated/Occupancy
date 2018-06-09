@@ -2,7 +2,7 @@ Notes about Occupany Script - 2017-06-10
 
 Get running notes:
 * Files are written as Bash scripts
-* Place all 3 files in /opt/ocs/ because this location is hard-coded.
+* Place all 3 files in /opt/uas/Occupancy/ because this location is hard-coded.
 * Add a line to cron to run the ocs_start.sh at box restart.
 * Add the UAS website login credentials to the ocs_config.cfg file.
 * make the scripts executable using 'chmod +x osc.sh' and 'chmod +x osc_start.sh'
