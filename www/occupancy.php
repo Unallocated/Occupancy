@@ -1,7 +1,7 @@
 <?php 
 define("STATUS_OPEN", "open");
 define("STATUS_CLOSED", "closed");
-define("OCCUPANCY_RESTART_COMMAND", "/opt/ocs/Occupancy restart");
+define("OCCUPANCY_RESTART_COMMAND", "/opt/uas/Occupancy/Occupancy restart");
 define("STATUS_FLAG_FILE", "/opt/uas/Occupancy/www/status.txt");
 
 function readStatus() {
