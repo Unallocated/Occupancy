@@ -55,7 +55,7 @@ currentlyOpen()
 pushStatusToWebsite ()
 {
     log "Call to pushStatusToWebsite"
-    sftp -n "${OCS_UAS_URL}" << END_FTP_COMMANDS
+    ftp -n "${OCS_UAS_URL}" << END_FTP_COMMANDS
         quote USER ${OCS_UAS_USER}
         quote PASS ${OCS_UAS_PASS}
         ascii
@@ -70,7 +70,7 @@ END_FTP_COMMANDS
 pushWallToWebsite ()
 {
     stamp=$(date '+%F_%T')
-    sftp -n "${OCS_UAS_URL}" << END_FTP_COMMANDS
+    ftp -n "${OCS_UAS_URL}" << END_FTP_COMMANDS
         quote USER ${OCS_UAS_USER}
         quote PASS ${OCS_UAS_PASS}
         ascii
@@ -92,7 +92,7 @@ END_FTP_COMMANDS
 openTheSpace()
 {
   # status file
-  echo "The space has been open since $(date '+%T %F')" > "${OCS_TMP_STATUS}"
+  echo "The space is currently open (Updated: $(date '+%m/%d %H:%M'))" > "${OCS_TMP_STATUS}"
 
   # website status
   pushStatusToWebsite
@@ -114,7 +114,7 @@ openTheSpace()
 closeTheSpace()
 {
   #Update flags, IRC, website status file, checkin, logging
-  echo "The space has been closed since $(date '+%T %F')" > "${OCS_TMP_STATUS}"
+  echo "The space is currently closed (Updated: $(date '+%m/%d %H:%M'))" > "${OCS_TMP_STATUS}"
   #website status
   pushStatusToWebsite
   #checkin
