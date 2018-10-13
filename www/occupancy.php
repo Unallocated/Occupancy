@@ -1,7 +1,7 @@
 <?php 
 define("STATUS_OPEN", "open");
 define("STATUS_CLOSED", "closed");
-define("OCCUPANCY_SCRIPT_OPEN", "/opt/uas/Occupancy/ocs_new.sh true 2>&1 &");
+define("OCCUPANCY_SCRIPT_OPEN", "bash -x /opt/uas/Occupancy/ocs_new.sh true 2>&1 &");
 define("OCCUPANCY_SCRIPT_CLOSED", "/opt/uas/Occupancy/ocs_new.sh false 2>&1 &");
 define("STATUS_FLAG_FILE", "/opt/uas/Occupancy/www/status.txt");
 

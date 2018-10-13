@@ -38,10 +38,12 @@ window.
 jQuery(document).ready(function() {
   
   jQuery("#openButton").click(function(event) {
+    $(this).val('Please wait ...').attr('disabled','disabled');
     window.setStatus(window.STATUS_OPEN)
   });
     
   jQuery("#closeButton").click(function(event) {
+    $(this).val('Please wait ...').attr('disabled','disabled');
     window.setStatus(window.STATUS_CLOSED)
   });
   

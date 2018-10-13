@@ -33,12 +33,17 @@ log()
 
 getWallPicture () 
 {
-    curl -s "http://${OCS_AXISCAMERA_IP}/axis-cgi/com/ptz.cgi?gotoserverpresetname=TheWall&camera=1"
+    log "Call to getWallPicture"
+    curl -s "http://${OCS_AXISCAMERA_IP}/axis-cgi/com/ptz.cgi?gotoserverpresetname=home1&camera=1"
+    #log "0"
     sleep 3
+    #log "1"
     curl -s "http://${OCS_AXISCAMERA_IP}/axis-cgi/com/ptz.cgi?camera=1&rzoom=-2500"
     sleep 1
+    #log "2"
     curl -s "http://${OCS_AXISCAMERA_IP}/axis-cgi/com/ptz.cgi?camera=1&rzoom=+2500"
     sleep 4
+    log "write wall image to temp location"
     wget "http://${OCS_AXISCAMERA_IP}/axis-cgi/jpg/image.cgi" -q -O "${OCS_TMP_WALL}"
     sleep 1
 }
@@ -65,6 +70,7 @@ END_FTP_COMMANDS
 #   moves the /tmp/thewall.jpg file to the websites status file
 pushWallToWebsite ()
 {
+    log "Call to pushWallToWebsite"
     stamp=$(date '+%F_%T')
     ftp -n "${OCS_UAS_URL}" << END_FTP_COMMANDS
         quote USER ${OCS_UAS_USER}
@@ -159,5 +165,4 @@ log "starting main"
 main
 
 exit 0
-
 
