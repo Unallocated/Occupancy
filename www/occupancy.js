@@ -39,7 +39,7 @@ window.pollStatus = function() {
   // const spinner = document.getElementById("loader");
   // spinner.style.visibility = "visible";
   // spinner.style.zIndex = "10";
-  jQuery.get("/occupancy.php.html?action=status", function(response) {
+  jQuery.get("/occupancy.php?action=status", function(response) {
     // console.log("Started Loading Status");
     window.displayStatus(response)
     window.setTimeout(window.pollStatus, window.statusPollingDelay * 1000)
