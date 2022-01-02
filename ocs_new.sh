@@ -27,14 +27,15 @@ log()
   echo "[$(date "+%Y-%m-%d %T")]: $*" >> "${OCS_LOGFILE}"
 }
 
-# getWallPicture() 
+# getWallPicture()
 # moves camera to preset 'TheWall' and sets flag
 # then takes picture and puts it at /tmp/thewall.jpg
 
-getWallPicture () 
+getWallPicture ()
 {
     log "Call to getWallPicture"
-    curl -s "http://${OCS_AXISCAMERA_IP}/axis-cgi/com/ptz.cgi?gotoserverpresetname=home1&camera=1"
+    # curl -s "http://${OCS_AXISCAMERA_IP}/axis-cgi/com/ptz.cgi?gotoserverpresetname=home1&camera=1"
+    curl -s "http://${OCS_AXISCAMERA_IP}/axis-cgi/com/ptz.cgi?gotoserverpresetname=TheWall&camera=1"
     #log "0"
     sleep 3
     #log "1"
@@ -60,7 +61,7 @@ pushStatusToWebsite ()
         quote USER ${OCS_UAS_USER}
         quote PASS ${OCS_UAS_PASS}
         ascii
-        passive 
+        passive
         put ${OCS_TMP_STATUS} ${OCS_UAS_STATUS_FILE}
         quit
 END_FTP_COMMANDS
@@ -158,11 +159,10 @@ main ()
 
 ###############################################################################
 # Script Entry
-#   All functions and variables need to be set above these lines 
+#   All functions and variables need to be set above these lines
 #   (i.e. keep this at the end)
 
 log "starting main"
 main
 
 exit 0
-
