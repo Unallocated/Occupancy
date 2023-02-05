@@ -34,15 +34,15 @@ log()
 getWallPicture () 
 {
     log "Call to getWallPicture"
-    curl -s "http://${OCS_AXISCAMERA_IP}/axis-cgi/com/ptz.cgi?gotoserverpresetname=home1&camera=1"
+    curl -s "http://${OCS_AXISCAMERA_IP}/axis-cgi/com/ptz.cgi?gotoserverpresetname=TheWall&camera=1"
     #log "0"
     sleep 3
     #log "1"
-    curl -s "http://${OCS_AXISCAMERA_IP}/axis-cgi/com/ptz.cgi?camera=1&rzoom=-2500"
-    sleep 1
+    #curl -s "http://${OCS_AXISCAMERA_IP}/axis-cgi/com/ptz.cgi?camera=1&rzoom=-2500"
+    #sleep 1
     #log "2"
-    curl -s "http://${OCS_AXISCAMERA_IP}/axis-cgi/com/ptz.cgi?camera=1&rzoom=+2500"
-    sleep 4
+    #curl -s "http://${OCS_AXISCAMERA_IP}/axis-cgi/com/ptz.cgi?camera=1&rzoom=+2500"
+    #sleep 4
     log "write wall image to temp location"
     wget "http://${OCS_AXISCAMERA_IP}/axis-cgi/jpg/image.cgi" -q -O "${OCS_TMP_WALL}"
     sleep 1
@@ -94,7 +94,7 @@ END_FTP_COMMANDS
 openTheSpace()
 {
   # status file
-  echo "The space is currently open (Updated: $(date '+%m/%d %H:%M'))" > "${OCS_TMP_STATUS}"
+  echo "Live Status: The space is currently open (Updated: $(date '+%m/%d %H:%M'))" > "${OCS_TMP_STATUS}"
 
   # website status
   pushStatusToWebsite
@@ -116,7 +116,7 @@ openTheSpace()
 closeTheSpace()
 {
   #Update flags, IRC, website status file, checkin, logging
-  echo "The space is currently closed (Updated: $(date '+%m/%d %H:%M'))" > "${OCS_TMP_STATUS}"
+  echo "Live Status: The space is currently closed (Updated: $(date '+%m/%d %H:%M'))" > "${OCS_TMP_STATUS}"
   #website status
   pushStatusToWebsite
   #checkin
