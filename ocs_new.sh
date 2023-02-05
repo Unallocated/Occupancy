@@ -96,6 +96,9 @@ openTheSpace()
   # status file
   echo "Live Status: The space is currently open (Updated: $(date '+%m/%d %H:%M'))" > "${OCS_TMP_STATUS}"
 
+  # Turn on open sign
+  kasa --type plug --host open-sign.uas.run on
+
   # website status
   pushStatusToWebsite
 
@@ -117,6 +120,10 @@ closeTheSpace()
 {
   #Update flags, IRC, website status file, checkin, logging
   echo "Live Status: The space is currently closed (Updated: $(date '+%m/%d %H:%M'))" > "${OCS_TMP_STATUS}"
+
+  # Turn off open sign
+  kasa --type plug --host open-sign.uas.run off
+
   #website status
   pushStatusToWebsite
   #checkin
