@@ -41,7 +41,6 @@ window.pollStatus = function() {
   // spinner.style.zIndex = "10";
   jQuery.get("/occupancy.php?action=status", function(response) {
     // console.log("Started Loading Status");
-    // console.log(response);
     window.displayStatus(response)
     window.setTimeout(window.pollStatus, window.statusPollingDelay * 1000)
   });
